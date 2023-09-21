@@ -1,0 +1,170 @@
+body {
+    font-family: Arial Arial, Helvetica, sans-serif;
+    background-image: url("https://i.pinimg.com/originals/8f/c5/3f/8fc53fc5d0336c5eec2921c0033e33fc.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+a {
+    padding-right: 5px;
+}
+
+.sidebar {
+    display: inline-block; 
+    vertical-align: top; 
+    position:absolute; 
+    right: 20px;
+}
+
+#main-content {
+    display:inline-block; 
+    max-width: 60%
+}
+
+.topics {
+    vertical-align: top;
+}
+
+.author-list { 
+    vertical-align: top;
+}
+
+#site-footer {
+    padding-left: 5px;
+}
+
+.latest-article-preview{
+    max-height: 500px; 
+    padding-left:5px; 
+    vertical-align: 250%;
+}
+/*post-preview format*/
+.post-preview {
+    border-bottom: 1px #eee solid;
+  }
+  .post-preview h2 {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  
+  .post-preview time {
+    color: #999;
+  }
+  
+  .post-preview section {
+    margin: 1rem 0;
+  }
+
+  /*post-detail format*/
+  #post-detail-article h1 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  
+  #post-detail-article .author {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  #post-detail-article .published {
+    color: #999;
+    font-size: 0.9rem;
+  }
+  
+  #post-detail-article .content {
+    margin: 2rem 0;
+  }
+/* example form format*/
+form table tbody tr th {
+  max-width: 200px;
+  text-align: right;
+  padding: 0.5em 1em 0.5em 0;
+  font-weight: 100;
+}
+
+/* Add some vertical spacing between rows */
+form table tbody td {
+  padding: 0.5em 0;
+}
+
+/* Style inputs */
+input {
+  border-radius: 0px;
+  font-size: 1em;
+  padding: 0.3em 0.5em;
+}
+
+/* Style button */
+button {
+  font-size: 1em;
+  color: #000;
+  cursor: pointer;
+  padding: 0.5em 3em;
+  border: 1px solid #999;
+  background: #eee;
+}
+
+/* Style select */
+select {
+  font-size: 1em;
+  padding: 1em;
+  line-height: 1.5em;
+}
+
+/* Style error messages */
+form .errorlist {
+  font-size: 0.9em;
+  font-weight: bold;
+  color: red;
+  padding: 0 0 0 1.5em;
+  margin: 0;
+}
+
+html {
+  height: 100%; /* Use whole height of browser */
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  min-height: 100%;  
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body .wrapper {
+  grid-template-rows: auto auto 1fr auto;  /* Sticky footer */
+  margin: 0 auto;  /* Centers the page */
+  min-height: 100%;  /* Full height */
+  max-width: 100%;  /* Set max width */
+  padding: 1rem;
+}
+
+.django-messages {
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 0;
+  list-style: none;
+}
+
+.django-messages div {
+  padding: 1rem;
+}
+
+.django-messages .success {
+  background: #bdfcb3;
+  color: #355430;
+}
+
+article {
+  background: rgba(149, 149, 149, 0.38);
+	border-radius: 25px;
+  vertical-align: middle;
+  padding-top: 0.1px;
+  padding-bottom: 0.1px;
+  padding-left: 10px;
+  padding-right: 10px;
+  max-width: 90%;
+}

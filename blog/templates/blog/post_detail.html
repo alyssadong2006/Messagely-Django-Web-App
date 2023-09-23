@@ -1,0 +1,105 @@
+{% extends "blog/base.html" %}
+{% block page_title %}{{ post.title }}{% endblock %}
+{% block main %}
+    <article id="post-detail-article">
+        <h1>{{ post.title }}</h1>
+        <span class="published">Published <time>{{ post.published }}</time></span><br>
+        <span class="author">{{ post.author.get_full_name }}</span><br>
+        <span class="topics">
+            {% for topic in post.topics.all %}
+            <a href = "{{ topic.get_absolute_url }}">{{ topic }}</a>
+            {% endfor %}
+        </span>
+
+        <section class="content">{{ post.content|safe|linebreaks }}</section>
+    </article>
+    <hr>
+    <h3>Latest Comments</h3>
+    {% for comment in comments %}
+        <span>
+            <section id = "comment-author" style = "font-size: small;">
+                By {{ comment.author.get_full_name }} | Published <time>{{ post.published }}</time>
+            </section>
+        </span>
+        {{ comment }}
+        <br>
+
+        <!--{% load static %}<img src="{% static 'blog\templates\blog\thumbsup.png' %}">-->
+        <!--<a href = "/comments/like/{{ comment.id }}" class = "like">
+            <small>{{ comment.likes }}</small>
+        </a>
+        <a href = "/comments/dislike/{{ comment.id }}" class = "dislike">
+            <small>{{ comment.dislikes }}</small>
+        </a>-->
+        <div style = "display:inline;"  class = "like" onclick = "likeHandler('{{comment.id}}')">
+            <div id="like_button_{{comment.id}}" style = "display:inline;">{{ comment.likes }}</div>
+            <i class="fa fa-thumbs-up"></i>
+        </div>
+        <div style = "display: inline;"  class = "dislike" onclick = "dislikeHandler('{{comment.id}}')">
+            <div id="dislike_button_{{comment.id}}" style = "display: inline;">{{ comment.dislikes }}</div>
+            <i class="fa fa-thumbs-down"></i>
+        </div>
+        <br>
+        <br>
+    {% endfor %}
+    <script>
+        //likes
+        function likeHandler(id) {
+            var csrftoken = getCookie("csrftoken");
+            let comment_id = id
+            let url = "{% url 'like' %}"
+            const data = {id:comment_id}
+            element = document.getElementById("like_button_"+id);
+            element.innerHTML ++
+            fetch(url, {
+                method: 'POST',
+                headers: { 'X-CSRFToken': csrftoken },
+                body: JSON.stringify(data)
+            })
+            // .then(responseJson => {
+            //     console.log(responseJson);
+            //     this.setState({
+            //     data: responseJson,
+            //     });
+            // })
+            // // .then(res => res.json())
+            // // .then(data => {
+            // //     console.log(data)
+            // // })
+            // .catch(error => {
+            //     console.error(error);
+            // });
+        };
+        function dislikeHandler(id) {
+            var csrftoken = getCookie("csrftoken");
+            let comment_id = id
+            let url = "{% url 'dislike' %}"
+            const data = {id:comment_id}
+            element = document.getElementById("dislike_button_"+id);
+            element.innerHTML ++
+            fetch(url, {
+                method: 'POST',
+                headers: { 'X-CSRFToken': csrftoken },
+                body: JSON.stringify(data)
+            })
+            //     .then(responseJson => {
+            //     console.log(responseJson);
+            //     this.setState({
+            //     data: responseJson,
+            //     });
+            // })
+            // // .then(res => res.json())
+            // // .then(data => {
+            // //     console.log(data)
+            // // })
+            // .catch(error => {
+            //     console.error(error);
+            // });
+        }
+    </script>
+    
+
+{% endblock %}
+<!--
+onclick="Like('{{ comment.id }}')"
+onclick="Dislike('{{ comment.id }}')"-->
